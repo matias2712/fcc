@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <!--script src='https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'>
+  </script-->
+  <nav id="navbar">
+    <header id="titulo">Git Basics</header>
+    <ul>
+      <li><a class="nav-link" href="#init">Init</a></li>
+      <li><a class="nav-link" href="#clone">Clone</a></li>
+      <li><a class="nav-link" href="#branch">Branch</a></li>
+      <li><a class="nav-link" href="#checkout">Checkout</a></li>
+      <li><a class="nav-link" href="#add">Add</a></li>
+      <li><a class="nav-link" href="#commit">Commit</a></li>
+      <li><a class="nav-link" href="#push">Push</a></li>
+      <li><a class="nav-link" href="#pull">Pull</a></li>
+      <li><a class="nav-link" href="#diff">Diff</a></li>
+      <li><a class="nav-link" href="#stash">Stash</a></li>
+      <li><a class="nav-link" href="#status">Status</a></li>
+      <li><a class="nav-link" href="#log">Log</a></li>
+      <li><a class="nav-link" href="#merge">Merge</a></li>
+    </ul>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="init">
+      <header>Init</header>
+      <p>
+        The git init command is usually the first command you’d run in any new project that is not already a Git repository (also commonly called repo).
+        It can be used to convert an existing, un-versioned folder into a Git repository. Also, you can use it to initialize an empty repo.</p>
+      <code>$ git init</code>
+      <p>This will transform the current directory into a Git repository. A .git sub-directory will be added. This will allow you to start recording multiple versions of your project. </p>
+    </section>
+  
+    <section class="main-section" id="clone">
+      <header>Clone</header>
+      <p>The git clone command is used to download the source code from a remote repository (like GitHub, Bitbucket, or GitLab).</p>
+      <p>When you clone a repo, the code is automatically downloaded to your local machine.</p>
+      <code>$ git clone &lt;https://url-of-the-repository&gt; </code>
+      <br>
+    </section>
+  
+    <section class="main-section" id="branch">
+      <header>Branch</header>
+      <p>Branch is one of the most important functionalities of Git. This allows teams to work on the same code base in parallel. It enables teams to create Git Workflows and make their workflows more efficient.
+  
+        Say, you’re working on “Feature A”. And your teammate is working on “Feature B”. By creating a separate branch for each feature, both of you can work on the same code base in parallel without having to worry about conflicts (at least while you’re writing the code).
+  
+        You can use this command to create a new branch, view existing branches, or delete a branch.</p>
+      <code>$ git branch &lt;branch-name&gt;</code>
+      <p>This command will create a new branch only in your local system. If you want this to be visible to all the members in the repo, you’ll still have to push the branch.</p>
+    </section>
+  
+    <section class="main-section" id="checkout">
+      <header>Checkout</header>
+      <p>A mistake I often made when I first started learning git commands was forgetting to switch to the new branch I just created. Yes, after you create a branch, you’ll have to switch to it with another command. That’s where the Git Checkout command comes in.</p>
+      <code>$ git checkout &lt;branch-name&gt;</code>
+      <p>This will automatically switch you to the branch name you mentioned in the command.
+  
+        However, when switching from one branch to another, you need to keep two things in mind:
+  
+      <ul>
+        <li>If you made some changes in the previous branch, you will have to first commit and push them (I’ll cover this command below) to your remote repo.</li>
+        <li>The branch you want to switch must be present in your local system. If not, you can pull them (covered below).</li>
+      </ul>
+      </p>
+    </section>
+  
+    <section class="main-section" id="add">
+      <header>Add</header>
+      <p>Every time you create a new file, delete it, or make a change, you’ll have to tell Git to track it and add it to the staging area. Otherwise, the files you made changes to wouldn’t be added when you try to push your changes.</p>
+      <code>git add &lt;file-name&gt; </code>
+      <p>This command will add only a single file to your next commit. If you want to add all the files to which changes were made, you can use</p>
+    </section>
+  
+    <section class="main-section" id="commit">
+      <header>Commit</header>
+      <p>Think of Git Commit command like a checkpoint in your development process.
+  
+        It’s commonly used to save your changes. Maybe after completing a specific work item assigned to you in your agile tool.
+  
+        Every time you commit your code changes, you’ll also include a message to briefly describe the changes you made. This helps other team members quickly understand what was added, changed, or removed.</p>
+      <code>$ git commit -a</code>
+      <p>This will commit all the changes in the directory you’re working in. Once this command is run, you’ll be prompted to enter a commit message.</p>
+    </section>
+  
+    <section class="main-section" id="push">
+      <header>Push</header>
+      <p>To make all your committed changes available to your teammates, you’ll have to push them to the remote origin.</p>
+      <code>$ git push &lt;remote&gt; &lt;branch-name&gt; </code>
+      <p>It’s important to remember that git push command will upload only the changes you’ve committed.</p>
+    </section>
+  
+    <section class="main-section" id="pull">
+      <header>Pull</header>
+      <p>Of course, you’d want to have the latest updates from teammates as well! The git pull command allows you to fetch all the changes that your teammates pushed and automatically merge them into your local repo.</p>
+      <code>$ git pull &lt;remote&gt;</code>
+      <p>In many cases, you will run into conflict because you had changed a line in a file that another teammate added. In such cases, you need to resolve the conflicts manually.</p>
+    </section>
+  
+    <section class="main-section" id="diff">
+      <header>Diff</header>
+      <p>Git Diff is my go-to command when I want to quickly see the difference between my current branch and another branch (usually the branch I’m merging into).</p>
+      <code>$ git diff</code>
+      <p>This will show you any uncommitted changes in your local repo.</p>
+    </section>
+  
+    <section class="main-section" id="stash">
+      <header>Stash</header>
+      <p>Git Stash temporarily shelves your work, so you can switch to another branch, work on something else, and then come back to this at a later time.
+  
+        It’s perfect if you need to work on something else and you’re midway through a code change, but aren’t ready to commit the code.</p>
+      <code>$ git stash save “&lt;stash-message&gt;”</code>
+      <p>This will stash your changes with the message you entered. This can be helpful when you want to come back and restore your stash, especially when you have several stashes.
+      </p>
+    </section>
+  
+    <section class="main-section" id="status">
+      <header>Status</header>
+      <p>When you’re feeling a bit lost with what’s happened in your repo (yes, it can happen) the Git Status command can tell you all the information you’ll need to know.</p>
+      <code>$ git status</code>
+      <p>This can give you information such as:</p>
+      <ul>
+        <li>Your current branch</li>
+        <li>Whether your current branch is up to date</li>
+        <li>If there’s anything in the branch that needs to be committed, pushed, or pulled.</li>
+        <li>If you have any files that are either staged or not staged.</li>
+        <li>And if you have any files that are created, modified, or deleted.</li>
+      </ul>
+    </section>
+  
+    <section class="main-section" id="log">
+      <header>Log</header>
+      <p>While git status gave you nearly all the information you’d have needed, it wouldn’t give you the information about the commit history for the repository.
+  
+        This is where the git log command comes into the picture.</p>
+      <code>$ git log</code>
+      <p>This displays the entire commit history. If your commit history is large, it’ll show only a portion of it and you can hit [space] to scroll or type q to quit.</p>
+    </section>
+    <section class="main-section" id="merge">
+      <header>Merge</header>
+      <p>Once you’re done with development inside your feature branch and tested your code, you can merge your branch with the parent branch. This could be either a develop branch or a master branch depending on the git workflow you follow.
+  
+        When running a git merge command, you first need to be on the specific branch that you want to merge with your feature branch.</p>
+      <code>$ git checkout develop</code>
+      <p></p>
+    </section>
+  </main>
+
+</body>
+</html>

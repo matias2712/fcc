@@ -1,0 +1,29 @@
+body {
+    color: Darkblue;
+    background-image: linear-gradient(0deg, rgba(0, 0, 255, 0), rgba(0, 0, 255, 0.1));
+    background-repeat: no-repeat;
+  }
+  
+  #title, #description {
+    text-align: center;
+  }
+  
+  #survey-form {
+    margin: 0 auto;
+  }
+  
+  #survey-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin: 0 10%;
+  }
+  
+  #texto {
+    grid-column: 1 / 3;
+    height: 100px;
+  }
+  
+   #submit {
+      grid-column: 1 / 3;
+  }
